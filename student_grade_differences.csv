@@ -1,0 +1,59 @@
+def calculate_average(num_list):
+    """
+    Calculate the average of a list of numbers.
+
+    Parameters:
+    num_list (list): A list of numbers.
+
+    Returns:
+    float: The average of the numbers in the list.
+    """
+    if len(num_list) == 0:
+        return None  # or any other value to indicate an empty list
+    return sum(num_list) / len(num_list)
+
+# Example usage
+if __name__ == "__main__":
+    numbers = [90, 85, 88, 75, 82, 95, 87, 78, 92, 80, 89, 76, 84, 91, 83, 77, 94, 86, 90, 73]
+    average = calculate_average(numbers)
+    print(f"The average is: {average:.2f}")
+
+    import pandas as pd
+from io import StringIO
+
+# Your data as a string
+data = """
+id,first_name,last_name,grade
+1,John,Doe,90
+2,Jane,Smith,85
+3,Emily,Jones,88
+4,Michael,Brown,75
+5,Sarah,Johnson,82
+6,David,Williams,95
+7,Laura,Garcia,87
+8,James,Martinez,78
+9,Olivia,Lopez,92
+10,Daniel,Gonzalez,80
+11,Mia,Wilson,89
+12,Matthew,Anderson,76
+13,Isabella,Thomas,84
+14,Joshua,Taylor,91
+15,Sophia,Moor,83
+16,Andrew,Jackson,77
+17,Charlotte,Harris,94
+18,Joseph,Martin,86
+19,Amelia,Thompson,90
+20,William,White,73
+"""
+
+# Read the data into a DataFrame
+df = pd.read_csv(StringIO(data))
+
+# Calculate the average grade
+average_grade = df['grade'].mean()
+
+# Calculate the difference between each student's score and the average score
+df['difference_from_average'] = df['grade'] - average_grade
+
+# Print the DataFrame with the differences
+print(df)
